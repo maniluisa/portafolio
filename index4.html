@@ -1,0 +1,107 @@
+import React, { useState } from 'react';
+import { Move, Minimize2, Maximize2 } from 'lucide-react';
+
+const InteractiveLayout = () => {
+  const [headerHeight, setHeaderHeight] = useState(100); // Initial header height
+  const [isHeaderDragging, setIsHeaderDragging] = useState(false);
+  const [footerHeight, setFooterHeight] = useState(100); // Initial footer height
+  const [isFooterDragging, setIsFooterDragging] = useState(false);
+
+  // Header resize handler
+  const handleHeaderResize = (e) => {
+    if (isHeaderDragging) {
+      const newHeight = e.clientY;
+      // Limit header height between 50 and 300 pixels
+      setHeaderHeight(Math.max(50, Math.min(newHeight, 300)));
+    }
+  };
+
+  // Footer resize handler
+  const handleFooterResize = (e) => {
+    if (isFooterDragging) {
+      const newHeight = window.innerHeight - e.clientY;
+      // Limit footer height between 50 and 300 pixels
+      setFooterHeight(Math.max(50, Math.min(newHeight, 300)));
+    }
+  };
+
+  // Stop dragging
+  const stopDragging = () => {
+    setIsHeaderDragging(false);
+    setIsFooterDragging(false);
+  };
+
+  return (
+    <div 
+      className="h-screen flex flex-col"
+      onMouseMove={isHeaderDragging ? handleHeaderResize : isFooterDragging ? handleFooterResize : undefined}
+      onMouseUp={stopDragging}
+      onMouseLeave={stopDragging}
+    >
+      {/* Resizable Header */}
+      <header 
+        className="bg-blue-500 text-white flex items-center justify-between px-4 relative transition-all duration-300 ease-in-out"
+        style={{ height: `${headerHeight}px` }}
+      >
+        <h1 className="text-2xl font-bold">Interactive Header</h1>
+        <div className="flex items-center space-x-2">
+          <Minimize2 
+            onClick={() => setHeaderHeight(50)} 
+            className="cursor-pointer hover:text-blue-200"
+          />
+          <Maximize2 
+            onClick={() => setHeaderHeight(200)} 
+            className="cursor-pointer hover:text-blue-200"
+          />
+        </div>
+        {/* Drag Handle */}
+        <div 
+          className="absolute bottom-0 left-0 right-0 h-4 cursor-row-resize flex items-center justify-center"
+          onMouseDown={() => setIsHeaderDragging(true)}
+        >
+          <Move className="text-white opacity-50" size={20} />
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="flex-grow bg-gray-100 p-4 overflow-auto">
+        <h2 className="text-xl mb-4">Main Content Area</h2>
+        <p>Drag the header or footer to resize. Click minimize/maximize icons to quick resize.</p>
+        <div className="grid grid-cols-3 gap-4 mt-4">
+          {[...Array(9)].map((_, i) => (
+            <div key={i} className="bg-white p-4 shadow rounded">
+              Content Block {i + 1}
+            </div>
+          ))}
+        </div>
+      </main>
+
+      {/* Resizable Footer */}
+      <footer 
+        className="bg-green-500 text-white flex items-center justify-between px-4 relative transition-all duration-300 ease-in-out"
+        style={{ height: `${footerHeight}px` }}
+      >
+        <div className="flex items-center space-x-2">
+          <Minimize2 
+            onClick={() => setFooterHeight(50)} 
+            className="cursor-pointer hover:text-green-200"
+          />
+          <Maximize2 
+            onClick={() => setFooterHeight(200)} 
+            className="cursor-pointer hover:text-green-200"
+          />
+        </div>
+        <p>© 2024 Interactive Layout</p>
+        {/* Drag Handle */}
+        <div 
+          className="absolute top-0 left-0 right-0 h-4 cursor-row-resize flex items-center justify-center"
+          onMouseDown={() => setIsFooterDragging(true)}
+        >
+          <Move className="text-white opacity-50" size={20} />
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default InteractiveLayout;

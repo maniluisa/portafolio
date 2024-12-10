@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Layout Interactivo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+        #header-resize, #footer-resize {
+            cursor: row-resize;
+        }
+    </style>
+</head>
+<body class="h-screen flex flex-col">
+    <!-- Encabezado Redimensionable -->
+    <header 
+        id="header" 
+        class="bg-blue-500 text-white flex items-center justify-between px-4 relative transition-all duration-300 ease-in-out"
+        style="height: 100px;"
+    >
+        <h1 class="text-2xl font-bold">Encabezado Interactivo</h1>
+        <div class="flex items-center space-x-2">
+            <button id="header-minimize" class="hover:bg-blue-600 p-1 rounded">
+                Min
+            </button>
+            <button id="header-maximize" class="hover:bg-blue-600 p-1 rounded">
+                Max
+            </button>
+        </div>
+        <div 
+            id="header-resize" 
+            class="absolute bottom-0 left-0 right-0 h-4 bg-blue-600 flex items-center justify-center"
+        >
+            ⋮
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="flex-grow bg-gray-100 p-4 overflow-auto">
+        <h2 class="text-xl mb-4">Área de Contenido Principal</h2>
+        <p>Arrastra el encabezado o pie de página para redimensionar.</p>
+        <div class="grid grid-cols-3 gap-4 mt-4">
+            <!-- Bloques de contenido -->
+            <div class="bg-white p-4 shadow rounded"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores vitae repudiandae libero illum, possimus veritatis reiciendis voluptatibus nulla, aliquid quo eius consectetur commodi vel itaque delectus exercitationem a sapiente est.</p></div>
+            <div class="bg-white p-4 shadow rounded"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus tenetur eos id aliquid corporis quis, asperiores et officiis saepe reprehenderit architecto dignissimos repudiandae, facere nam non maxime! Corrupti, quis voluptatum.</p></div>
+            <div class="bg-white p-4 shadow rounded"><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil error ipsam sunt deserunt ut ducimus, dicta rem. Atque quae nihil, veritatis vero quos, nobis consectetur quidem officia, tenetur inventore eius!</p></div>
+            <div class="bg-white p-4 shadow rounded"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis totam nemo architecto mollitia dolorem officiis laborum beatae ullam, corrupti voluptatum aliquam sequi cupiditate minus possimus delectus officia? Vero, non nam.</p></div>
+            <div class="bg-white p-4 shadow rounded"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus temporibus totam itaque unde? Temporibus dolor pariatur nemo eaque, corrupti cupiditate ratione eius assumenda nostrum in suscipit beatae cumque nulla totam?</p></div>
+            <div class="bg-white p-4 shadow rounded"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit voluptates repellendus quaerat, architecto error illum nostrum illo ullam, necessitatibus enim, rerum autem sunt exercitationem cumque quibusdam non ex corrupti quod!</p></div>
+        </div>
+    </main>
+
+    <!-- Pie de Página Redimensionable -->
+    <footer 
+        id="footer" 
+        class="bg-green-500 text-white flex items-center justify-between px-4 relative transition-all duration-300 ease-in-out"
+        style="height: 100px;"
+    >
+        <div class="flex items-center space-x-2">
+            <button id="footer-minimize" class="hover:bg-green-600 p-1 rounded">
+                Minimizar
+            </button>
+            <button id="footer-maximize" class="hover:bg-green-600 p-1 rounded">
+                Maximizar
+            </button>
+        </div>
+        <p>© 2024 Layout Interactivo</p>
+        <div 
+            id="footer-resize" 
+            class="absolute top-0 left-0 right-0 h-4 bg-green-600 flex items-center justify-center"
+        >
+            ⋮
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.getElementById('header');
+            const headerResize = document.getElementById('header-resize');
+            const headerMinimize = document.getElementById('header-minimize');
+            const headerMaximize = document.getElementById('header-maximize');
+
+            const footer = document.getElementById('footer');
+            const footerResize = document.getElementById('footer-resize');
+            const footerMinimize = document.getElementById('footer-minimize');
+            const footerMaximize = document.getElementById('footer-maximize');
+
+            let isHeaderDragging = false;
+            let isFooterDragging = false;
+
+            // Manejadores de redimensionamiento de encabezado
+            headerResize.addEventListener('mousedown', (e) => {
+                isHeaderDragging = true;
+                document.body.style.cursor = 'row-resize';
+            });
+
+            headerMinimize.addEventListener('click', () => {
+                header.style.height = '50px';
+            });
+
+            headerMaximize.addEventListener('click', () => {
+                header.style.height = '200px';
+            });
+
+            // Manejadores de redimensionamiento de pie de página
+            footerResize.addEventListener('mousedown', (e) => {
+                isFooterDragging = true;
+                document.body.style.cursor = 'row-resize';
+            });
+
+            footerMinimize.addEventListener('click', () => {
+                footer.style.height = '50px';
+            });
+
+            footerMaximize.addEventListener('click', () => {
+                footer.style.height = '200px';
+            });
+
+            // Evento de movimiento del ratón para redimensionar
+            document.addEventListener('mousemove', (e) => {
+                if (isHeaderDragging) {
+                    const newHeight = Math.max(50, Math.min(e.clientY, 300));
+                    header.style.height = `${newHeight}px`;
+                }
+
+                if (isFooterDragging) {
+                    const newHeight = Math.max(50, Math.min(window.innerHeight - e.clientY, 300));
+                    footer.style.height = `${newHeight}px`;
+                }
+            });
+
+            // Detener el redimensionamiento
+            document.addEventListener('mouseup', () => {
+                isHeaderDragging = false;
+                isFooterDragging = false;
+                document.body.style.cursor = 'default';
+            });
+        });
+    </script>
+</body>
+</html>

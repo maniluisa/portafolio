@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ManiLuisa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+            /* Estilos base para modo oscuro */
+    .dark body {
+    background-color: #1a202c;
+    color: #e2e8f0;
+    }
+    .dark .dark\:bg-gray-800 {
+    background-color: #2d3748;
+    }
+    .dark .dark\:text-white {
+    color: #ffffff;
+    }
+    .dark .dark\:bg-gray-700 {
+    background-color: #4a5568;
+    }
+    .content-block img {
+    max-width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+    }
+    .img1{
+
+    text-align: center;
+    }
+
+            /* Nuevos estilos de degradado negro a rojo */
+            header {
+                background: linear-gradient(to right, black, red);
+            }
+            footer {
+                background: linear-gradient(to right, black, red);
+            }
+
+    /* Resize bar for header */
+#header-resize {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 10px; /* Slightly increased for easier grabbing */
+    background: linear-gradient(to right, rgba(0,0,0,0.3), rgba(255,0,0,0.3));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: row-resize;
+    transition: background-color 0.3s ease;
+}
+
+#header-resize:hover {
+    background: linear-gradient(to right, rgba(0,0,0,0.5), rgba(255,0,0,0.5));
+}
+
+/* Resize bar for footer */
+#footer-resize {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 10px; /* Slightly increased for easier grabbing */
+    background: linear-gradient(to right, rgba(0,0,0,0.3), rgba(255,0,0,0.3));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: row-resize;
+    transition: background-color 0.3s ease;
+}
+
+#footer-resize:hover {
+    background: linear-gradient(to right, rgba(0,0,0,0.5), rgba(255,0,0,0.5));
+}
+    </style>
+
+</head>
+<body class="h-screen flex flex-col transition-colors duration-300">
+    <!-- Botón de Modo Oscuro/Claro -->
+    <div class="fixed top-10 right-4 z-50">
+        <button 
+            id="theme-toggle" 
+            class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white p-2 rounded-full transition-colors duration-300"
+        >
+            <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- Encabezado Redimensionable -->
+    <header 
+        id="header" 
+        class="bg-blue-500 text-white flex items-center justify-between px-4 relative transition-all duration-300 ease-in-out dark:bg-blue-800"
+        style="height: 100px;"
+    >
+        <h1 class="text-2xl font-bold">Luisa Insuasti</h1>
+        <div class="flex items-center space-x-2">
+            <button id="header-minimize" class="hover:bg-blue-600 dark:hover:bg-blue-700 p-1 rounded">
+                ›‹
+            </button>
+            <button id="header-maximize" class="hover:bg-blue-600 dark:hover:bg-blue-700 p-1 rounded">
+                ‹›
+            </button>
+        </div>
+        <div 
+            id="header-resize" 
+            class="absolute bottom-0 left-0 right-0 h-4 bg-blue-600 dark:bg-blue-900 flex items-center justify-center cursor-row-resize"
+        >
+            
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="flex-grow bg-gray-100 p-4 overflow-auto dark:bg-gray-800 dark:text-gray-200">
+        <h2 class="text-xl mb-4">FullStack Developer</h2>
+        <img src="fotomm.jpeg" alt="" height="10%" width="10%" class="img1">
+        <div id="content-grid" class="grid grid-cols-3 gap-4 mt-4">
+            <!-- Bloques de contenido con carga de archivos -->
+            <div id="block-1" class="content-block bg-white p-4 shadow rounded dark:bg-gray-700 dark:text-white">
+                <div class="mb-2"><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem ad ratione odio natus, inventore fugit blanditiis iusto repellat earum! Eveniet odio, ut magnam quam illum incidunt aut magni voluptatibus sapiente.</p></div>
+                <input type="file" accept="image/*" class="image-input mb-2 w-full">
+                <textarea class="text-input w-full border rounded p-1" placeholder="Añade texto aquí" rows="3"></textarea>
+            </div>
+            <div id="block-2" class="content-block bg-white p-4 shadow rounded dark:bg-gray-700 dark:text-white">
+                <div class="mb-2"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi possimus similique perferendis consectetur quaerat explicabo quos est adipisci. Alias quasi aliquam reiciendis dignissimos nulla, harum vitae aliquid temporibus libero assumenda. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quae, sit necessitatibus, repellat ad, assumenda harum omnis eos animi perferendis aut vel mollitia velit expedita sint veritatis. Officia, eos saepe. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non doloribus dolor veniam perspiciatis voluptatem atque, et ex amet unde cupiditate ea ipsum. Necessitatibus consectetur doloribus ipsa sapiente, iusto tempora eos? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus porro itaque nam, quod eos molestiae, optio maiores, est recusandae cumque minima cupiditate odio vitae enim molestias libero esse facere hic?</p></div>
+                <input type="file" accept="image/*" class="image-input mb-2 w-full">
+                <textarea class="text-input w-full border rounded p-1" placeholder="Añade texto aquí" rows="3"></textarea>
+            </div>
+            <div id="block-3" class="content-block bg-white p-4 shadow rounded dark:bg-gray-700 dark:text-white">
+                <div class="mb-2"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi possimus similique perferendis consectetur quaerat explicabo quos est adipisci. Alias quasi aliquam reiciendis dignissimos nulla, harum vitae aliquid temporibus libero assumenda. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quae, sit necessitatibus, repellat ad, assumenda harum omnis eos animi perferendis aut vel mollitia velit expedita sint veritatis. Officia, eos saepe. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non doloribus dolor veniam perspiciatis voluptatem atque, et ex amet unde cupiditate ea ipsum. Necessitatibus consectetur doloribus ipsa sapiente, iusto tempora eos? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus porro itaque nam, quod eos molestiae, optio maiores, est recusandae cumque minima cupiditate odio vitae enim molestias libero esse facere hic?</p></div>
+                <input type="file" accept="image/*" class="image-input mb-2 w-full">
+                <textarea class="text-input w-full border rounded p-1" placeholder="Añade texto aquí" rows="3"></textarea>
+            </div>
+            <div id="block-4" class="content-block bg-white p-4 shadow rounded dark:bg-gray-700 dark:text-white">
+                <div class="mb-2"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi possimus similique perferendis consectetur quaerat explicabo quos est adipisci. Alias quasi aliquam reiciendis dignissimos nulla, harum vitae aliquid temporibus libero assumenda. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quae, sit necessitatibus, repellat ad, assumenda harum omnis eos animi perferendis aut vel mollitia velit expedita sint veritatis. Officia, eos saepe. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non doloribus dolor veniam perspiciatis voluptatem atque, et ex amet unde cupiditate ea ipsum. Necessitatibus consectetur doloribus ipsa sapiente, iusto tempora eos? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus porro itaque nam, quod eos molestiae, optio maiores, est recusandae cumque minima cupiditate odio vitae enim molestias libero esse facere hic?</p></div>
+                <input type="file" accept="image/*" class="image-input mb-2 w-full">
+                <textarea class="text-input w-full border rounded p-1" placeholder="Añade texto aquí" rows="3"></textarea>
+            </div>
+            <div id="block-5" class="content-block bg-white p-4 shadow rounded dark:bg-gray-700 dark:text-white">
+                <div class="mb-2"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi possimus similique perferendis consectetur quaerat explicabo quos est adipisci. Alias quasi aliquam reiciendis dignissimos nulla, harum vitae aliquid temporibus libero assumenda. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quae, sit necessitatibus, repellat ad, assumenda harum omnis eos animi perferendis aut vel mollitia velit expedita sint veritatis. Officia, eos saepe. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non doloribus dolor veniam perspiciatis voluptatem atque, et ex amet unde cupiditate ea ipsum. Necessitatibus consectetur doloribus ipsa sapiente, iusto tempora eos? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus porro itaque nam, quod eos molestiae, optio maiores, est recusandae cumque minima cupiditate odio vitae enim molestias libero esse facere hic?</p></div>
+                <input type="file" accept="image/*" class="image-input mb-2 w-full">
+                <textarea class="text-input w-full border rounded p-1" placeholder="Añade texto aquí" rows="3"></textarea>
+            </div>
+            <div id="block-6" class="content-block bg-white p-4 shadow rounded dark:bg-gray-700 dark:text-white">
+                <div class="mb-2"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi possimus similique perferendis consectetur quaerat explicabo quos est adipisci. Alias quasi aliquam reiciendis dignissimos nulla, harum vitae aliquid temporibus libero assumenda. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quae, sit necessitatibus, repellat ad, assumenda harum omnis eos animi perferendis aut vel mollitia velit expedita sint veritatis. Officia, eos saepe. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non doloribus dolor veniam perspiciatis voluptatem atque, et ex amet unde cupiditate ea ipsum. Necessitatibus consectetur doloribus ipsa sapiente, iusto tempora eos? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus porro itaque nam, quod eos molestiae, optio maiores, est recusandae cumque minima cupiditate odio vitae enim molestias libero esse facere hic?</p></div>
+                <input type="file" accept="image/*" class="image-input mb-2 w-full">
+                <textarea class="text-input w-full border rounded p-1" placeholder="Añade texto aquí" rows="3"></textarea>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pie de Página Redimensionable -->
+    <footer 
+        id="footer" 
+        class="bg-green-500 text-white flex items-center justify-between px-4 relative transition-all duration-300 ease-in-out dark:bg-green-800"
+        style="height: 100px;"
+    >
+        <div class="flex items-center space-x-2">
+            <button id="footer-minimize" class="hover:bg-green-600 dark:hover:bg-green-700 p-1 rounded">
+                ›‹
+            </button>
+            <button id="footer-maximize" class="hover:bg-green-600 dark:hover:bg-green-700 p-1 rounded">
+                ‹›
+            </button>
+        </div>
+        <p>© 2024 Luisa Insuasti</p>
+        <!-- Cambiar tamaño footer -->
+        <div 
+            id="footer-resize" 
+            class="absolute top-0 left-0 right-0 h-4 bg-green-600 dark:bg-green-900 flex items-center justify-center cursor-row-resize"
+        >
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Redimensionamiento de encabezado y pie de página (código previo)
+            var header = document.getElementById('header');
+            var headerResize = document.getElementById('header-resize');
+            var headerMinimize = document.getElementById('header-minimize');
+            var headerMaximize = document.getElementById('header-maximize');
+        
+            var footer = document.getElementById('footer');
+            var footerResize = document.getElementById('footer-resize');
+            var footerMinimize = document.getElementById('footer-minimize');
+            var footerMaximize = document.getElementById('footer-maximize');
+        
+            var isHeaderDragging = false;
+            var isFooterDragging = false;
+        
+            // Manejadores de redimensionamiento de encabezado
+            headerResize.addEventListener('mousedown', function(e) {
+                isHeaderDragging = true;
+                document.body.style.cursor = 'row-resize';
+            });
+        
+            headerMinimize.addEventListener('click', function() {
+                header.style.height = '50px';
+            });
+        
+            headerMaximize.addEventListener('click', function() {
+                header.style.height = '200px';
+            });
+        
+            // Manejadores de redimensionamiento de pie de página
+            footerResize.addEventListener('mousedown', function(e) {
+                isFooterDragging = true;
+                document.body.style.cursor = 'row-resize';
+            });
+        
+            footerMinimize.addEventListener('click', function() {
+                footer.style.height = '50px';
+            });
+        
+            footerMaximize.addEventListener('click', function() {
+                footer.style.height = '200px';
+            });
+        
+            // Evento de movimiento del ratón para redimensionar
+            document.addEventListener('mousemove', function(e) {
+                if (isHeaderDragging) {
+                    var newHeight = Math.max(50, Math.min(e.clientY, 300));
+                    header.style.height = newHeight + 'px';
+                }
+        
+                if (isFooterDragging) {
+                    var newHeight = Math.max(50, Math.min(window.innerHeight - e.clientY, 300));
+                    footer.style.height = newHeight + 'px';
+                }
+            });
+        
+            // Detener el redimensionamiento
+            document.addEventListener('mouseup', function() {
+                isHeaderDragging = false;
+                isFooterDragging = false;
+                document.body.style.cursor = 'default';
+            });
+        
+            // Modo Oscuro / Claro
+            var themeToggle = document.getElementById('theme-toggle');
+            var themeIcon = document.getElementById('theme-icon');
+        
+            themeToggle.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+                
+                // Cambiar ícono
+                if (document.documentElement.classList.contains('dark')) {
+                    // Ícono de sol para modo oscuro
+                    themeIcon.innerHTML = `
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2"></path>
+                        <path d="M12 20v2"></path>
+                        <path d="m4.93 4.93 1.41 1.41"></path>
+                        <path d="m17.66 17.66 1.41 1.41"></path>
+                        <path d="M2 12h2"></path>
+                        <path d="M20 12h2"></path>
+                        <path d="m6.34 17.66-1.41 1.41"></path>
+                        <path d="m19.07 4.93-1.41 1.41"></path>
+                    `;
+                } else {
+                    // Ícono de luna para modo claro
+                    themeIcon.innerHTML = `
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                    `;
+                }
+            });
+        
+            // Manejo de carga de imágenes y texto
+            document.querySelectorAll('.content-block').forEach(block => {
+                const imageInput = block.querySelector('.image-input');
+                const textInput = block.querySelector('.text-input');
+        
+                // Crear contenedores para imagen y texto si no existen
+                if (!block.querySelector('.image-container')) {
+                    const imageContainer = document.createElement('div');
+                    imageContainer.classList.add('image-container', 'mb-2');
+                    block.insertBefore(imageContainer, imageInput);
+                }
+        
+                // Manejar carga de imágenes
+                imageInput.addEventListener('change', function(e) {
+                    const file = e.target.files[0];
+                    const imageContainer = block.querySelector('.image-container');
+                    
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(event) {
+                            // Limpiar contenedor anterior
+                            imageContainer.innerHTML = '';
+                            
+                            // Crear nueva imagen
+                            const img = document.createElement('img');
+                            img.src = event.target.result;
+                            img.classList.add('max-w-full', 'max-h-48', 'object-contain');
+                            
+                            imageContainer.appendChild(img);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

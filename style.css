@@ -1,0 +1,23 @@
+ /* Estilos base para modo oscuro */
+ .dark body {
+  background-color: #1a202c;
+  color: #e2e8f0;
+}
+.dark .dark\:bg-gray-800 {
+  background-color: #2d3748;
+}
+.dark .dark\:text-white {
+  color: #ffffff;
+}
+.dark .dark\:bg-gray-700 {
+  background-color: #4a5568;
+}
+.content-block img {
+  max-width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+}
+.img1{
+  
+  text-align: center;
+}

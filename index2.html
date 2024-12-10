@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Interactivo con Guardado de Datos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilos base para modo oscuro */
+        .dark body {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+        .dark .dark\:bg-gray-800 {
+            background-color: #2d3748;
+        }
+        .dark .dark\:text-white {
+            color: #ffffff;
+        }
+        .dark .dark\:bg-gray-700 {
+            background-color: #4a5568;
+        }
+        .content-block img {
+            max-width: 100%;
+            max-height: 200px;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body class="h-screen flex flex-col transition-colors duration-300">
+    <!-- Botón de Modo Oscuro/Claro -->
+    <div class="fixed top-4 right-4 z-50 flex space-x-2">
+        <button 
+            id="save-all-btn"
+            class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+        >
+            Guardar Todo
+        </button>
+        <button 
+            id="theme-toggle" 
+            class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white p-2 rounded-full transition-colors duration-300"
+        >
+            <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- Resto del código anterior se mantiene igual hasta la sección de bloques -->
+    <main class="flex-grow bg-gray-100 p-4 overflow-auto dark:bg-gray-800 dark:text-gray-200">
+        <h2 class="text-xl mb-4">Área de Contenido Principal</h2>
+        <p>Puedes cargar imágenes, texto y guardar en un repositorio local.</p>
+        <div id="content-grid" class="grid grid-cols-3 gap-4 mt-4">
+            <!-- Bloques de contenido con carga de archivos y botón de guardado -->
+            <div id="block-1" class="content-block bg-white p-4 shadow rounded dark:bg-gray-700 dark:text-white">
+                <div class="mb-2 font-bold">Bloque 1</div>
+                <div class="image-container mb-2"></div>
+                <input type="file" accept="image/*" class="image-input mb-2 w-full">
+                <textarea class="text-input w-full border rounded p-1" placeholder="Añade texto aquí" rows="3"></textarea>
+                <button class="save-block-btn mt-2 bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 w-full">
+                    Guardar Bloque
+                </button>
+            </div>
+            <!-- Repetir estructura similar para los otros 5 bloques -->
+            <div id="block-2" class="content-block bg-white p-4 shadow rounded dark:bg-gray-700 dark:text-white">
+                <div class="mb-2 font-bold">Bloque 2</div>
+                <div class="image-container mb-2"></div>
+                <input type="file" accept="image/*" class="image-input mb-2 w-full">
+                <textarea class="text-input w-full border rounded p-1" placeholder="Añade texto aquí" rows="3"></textarea>
+                <button class="save-block-btn mt-2 bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 w-full">
+                    Guardar Bloque
+                </button>
+            </div>
+            <div id="block-3" class="content-block bg-white p-4 shadow rounded dark:bg-gray-700 dark:text-white">
+                <div class="mb-2 font-bold">Bloque 3</div>
+                <div class="image-container mb-2"></div>
+                <input type="file" accept="image/*" class="image-input mb-2 w-full">
+                <textarea class="text-input w-full border rounded p-1" placeholder="Añade texto aquí" rows="3"></textarea>
+                <button class="save-block-btn mt-2 bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 w-full">
+                    Guardar Bloque
+                </button>
+            </div>
+            <div id="block-4" class="content-block bg-white p-4 shadow rounded dark:bg-gray-700 dark:text-white">
+                <div class="mb-2 font-bold">Bloque 4</div>
+                <div class="image-container mb-2"></div>
+                <input type="file" accept="image/*" class="image-input mb-2 w-full">
+                <textarea class="text-input w-full border rounded p-1" placeholder="Añade texto aquí" rows="3"></textarea>
+                <button class="save-block-btn mt-2 bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 w-full">
+                    Guardar Bloque
+                </button>
+            </div>
+            <div id="block-5" class="content-block bg-white p-4 shadow rounded dark:bg-gray-700 dark:text-white">
+                <div class="mb-2 font-bold">Bloque 5</div>
+                <div class="image-container mb-2"></div>
+                <input type="file" accept="image/*" class="image-input mb-2 w-full">
+                <textarea class="text-input w-full border rounded p-1" placeholder="Añade texto aquí" rows="3"></textarea>
+                <button class="save-block-btn mt-2 bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 w-full">
+                    Guardar Bloque
+                </button>
+            </div>
+            <div id="block-6" class="content-block bg-white p-4 shadow rounded dark:bg-gray-700 dark:text-white">
+                <div class="mb-2 font-bold">Bloque 6</div>
+                <div class="image-container mb-2"></div>
+                <input type="file" accept="image/*" class="image-input mb-2 w-full">
+                <textarea class="text-input w-full border rounded p-1" placeholder="Añade texto aquí" rows="3"></textarea>
+                <button class="save-block-btn mt-2 bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 w-full">
+                    Guardar Bloque
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Resto del código anterior se mantiene igual -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Función para mostrar notificaciones
+            function showNotification(message, isError = false) {
+                const notification = document.createElement('div');
+                notification.classList.add(
+                    'fixed', 'top-4', 'left-1/2', '-translate-x-1/2', 'z-50', 
+                    'px-4', 'py-2', 'rounded', 'text-white', 
+                    isError ? 'bg-red-500' : 'bg-green-500'
+                );
+                notification.textContent = message;
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 3000);
+            }
+
+            // Manejar carga de imágenes para cada bloque
+            document.querySelectorAll('.content-block').forEach(block => {
+                const blockId = block.id;
+                const imageInput = block.querySelector('.image-input');
+                const textInput = block.querySelector('.text-input');
+                const imageContainer = block.querySelector('.image-container');
+                const saveBlockBtn = block.querySelector('.save-block-btn');
+
+                // Manejar carga de imágenes
+                imageInput.addEventListener('change', function(e) {
+                    const file = e.target.files[0];
+                    
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(event) {
+                            // Limpiar contenedor anterior
+                            imageContainer.innerHTML = '';
+                            
+                            // Crear nueva imagen
+                            const img = document.createElement('img');
+                            img.src = event.target.result;
+                            img.classList.add('max-w-full', 'max-h-48', 'object-contain');
+                            
+                            imageContainer.appendChild(img);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+
+                // Guardar bloque individual
+                saveBlockBtn.addEventListener('click', function() {
+                    const imageData = imageContainer.querySelector('img') ? imageContainer.querySelector('img').src : null;
+                    const textData = textInput.value.trim();
+
+                    if (!imageData && !textData) {
+                        showNotification('No hay datos para guardar', true);
+                        return;
+                    }
+
+                    // Guardar en localStorage
+                    const blockData = {
+                        id: blockId,
+                        image: imageData,
+                        text: textData,
+                        timestamp: new Date().toISOString()
+                    };
+
+                    // Obtener datos existentes
+                    const savedBlocks = JSON.parse(localStorage.getItem('contentBlocks') || '{}');
+                    savedBlocks[blockId] = blockData;
+
+                    // Guardar en localStorage
+                    localStorage.setItem('contentBlocks', JSON.stringify(savedBlocks));
+
+                    showNotification(`Bloque ${blockId.split('-')[1]} guardado`);
+                });
+            });
+
+            // Guardar todos los bloques
+            const saveAllBtn = document.getElementById('save-all-btn');
+            saveAllBtn.addEventListener('click', function() {
+                const allBlockData = {};
+                let hasData = false;
+
+                document.querySelectorAll('.content-block').forEach(block => {
+                    const blockId = block.id;
+                    const imageContainer = block.querySelector('.image-container');
+                    const textInput = block.querySelector('.text-input');
+
+                    const imageData = imageContainer.querySelector('img') ? imageContainer.querySelector('img').src : null;
+                    const textData = textInput.value.trim();
+
+                    if (imageData || textData) {
+                        hasData = true;
+                        allBlockData[blockId] = {
+                            id: blockId,
+                            image: imageData,
+                            text: textData,
+                            timestamp: new Date().toISOString()
+                        };
+                    }
+                });
+
+                if (!hasData) {
+                    showNotification('No hay datos para guardar', true);
+                    return;
+                }
+
+                // Guardar todos los bloques en localStorage
+                localStorage.setItem('contentBlocks', JSON.stringify(allBlockData));
+                showNotification('Todos los bloques guardados');
+            });
+
+            // Cargar datos guardados al iniciar
+            const savedBlocks = JSON.parse(localStorage.getItem('contentBlocks') || '{}');
+            Object.entries(savedBlocks).forEach(([blockId, blockData]) => {
+                const block = document.getElementById(blockId);
+                if (block) {
+                    const imageContainer = block.querySelector('.image-container');
+                    const textInput = block.querySelector('.text-input');
+
+                    // Restaurar imagen
+                    if (blockData.image) {
+                        const img = document.createElement('img');
+                        img.src = blockData.image;
+                        img.classList.add('max-w-full', 'max-h-48', 'object-contain');
+                        imageContainer.innerHTML = '';
+                        imageContainer.appendChild(img);
+                    }
+
+                    // Restaurar texto
+                    if (blockData.text) {
+                        textInput.value = blockData.text;
+                    }
+                }
+            });
+
+            // Resto del código anterior (modo oscuro, redimensionamiento) se mantiene igual
+            // ... (previous dark mode and resizing code)
+        });
+    </script>
+</body>
+</html>
