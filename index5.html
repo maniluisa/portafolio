@@ -1,0 +1,98 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Mi Portafolio</h1>
+            <nav>
+                <ul>
+                    <li><a href="#sobre-mi">Sobre Mí</a></li>
+                    <li><a href="#proyectos">Proyectos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="sobre-mi" class="section">
+            <div class="container">
+                <h2>Sobre Mí</h2>
+                <div class="perfil">
+                    <img src="foto-perfil.jpg" alt="Tu Foto de Perfil">
+                    <div class="descripcion">
+                        <h3>Tu Nombre</h3>
+                        <p>Breve descripción sobre ti, tus habilidades y objetivos profesionales.</p>
+                        <div class="habilidades">
+                            <h4>Mis Habilidades</h4>
+                            <ul>
+                                <li>Habilidad 1</li>
+                                <li>Habilidad 2</li>
+                                <li>Habilidad 3</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="proyectos" class="section">
+            <div class="container">
+                <h2>Mis Proyectos</h2>
+                <div class="grid-proyectos">
+                    <div class="proyecto">
+                        <img src="proyecto1.jpg" alt="Proyecto 1">
+                        <h3>Nombre del Proyecto 1</h3>
+                        <p>Descripción breve del proyecto.</p>
+                        <a href="#" class="btn">Ver Proyecto</a>
+                    </div>
+                    <div class="proyecto">
+                        <img src="proyecto2.jpg" alt="Proyecto 2">
+                        <h3>Nombre del Proyecto 2</h3>
+                        <p>Descripción breve del proyecto.</p>
+                        <a href="#" class="btn">Ver Proyecto</a>
+                    </div>
+                    <div class="proyecto">
+                        <img src="proyecto3.jpg" alt="Proyecto 3">
+                        <h3>Nombre del Proyecto 3</h3>
+                        <p>Descripción breve del proyecto.</p>
+                        <a href="#" class="btn">Ver Proyecto</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="section">
+            <div class="container">
+                <h2>Contacto</h2>
+                <form id="form-contacto">
+                    <input type="text" placeholder="Nombre" required>
+                    <input type="email" placeholder="Correo Electrónico" required>
+                    <textarea placeholder="Tu Mensaje" required></textarea>
+                    <button type="submit" class="btn">Enviar Mensaje</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="redes-sociales">
+                <a href="#" class="red-social">LinkedIn</a>
+                <a href="#" class="red-social">GitHub</a>
+                <a href="#" class="red-social">Twitter</a>
+            </div>
+            <p>&copy; 2024 Tu Nombre. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
