@@ -1,23 +1,145 @@
- /* Estilos base para modo oscuro */
- .dark body {
-  background-color: #1a202c;
-  color: #e2e8f0;
+/* styles.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.dark .dark\:bg-gray-800 {
-  background-color: #2d3748;
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
 }
-.dark .dark\:text-white {
-  color: #ffffff;
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
-.dark .dark\:bg-gray-700 {
-  background-color: #4a5568;
+
+header {
+    background-color: #f4f4f4;
+    padding: 20px 0;
 }
-.content-block img {
-  max-width: 100%;
-  max-height: 200px;
-  object-fit: contain;
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-.img1{
-  
-  text-align: center;
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.section {
+    padding: 60px 0;
+}
+
+.perfil {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.perfil img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.grid-proyectos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.proyecto {
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.proyecto img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+#form-contacto {
+    display: grid;
+    gap: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#form-contacto input,
+#form-contacto textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#form-contacto textarea {
+    height: 150px;
+}
+
+footer {
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.redes-sociales {
+    margin-bottom: 15px;
+}
+
+.red-social {
+    margin: 0 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .perfil {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .grid-proyectos {
+        grid-template-columns: 1fr;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
 }
