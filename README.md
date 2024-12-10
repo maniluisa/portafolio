@@ -1,3 +1,69 @@
+
+L
+
+a donde envia el mensaje , donde quedan guardados?
+
+Actualmente, en el código de ejemplo que te mostré, el formulario no envía realmente los mensajes a ningún lugar. Es solo un prototipo básico. Para que los mensajes se guarden o envíen realmente, necesitarías implementar una de estas opciones:
+
+    Servicios de formularios de terceros:
+
+    Formspree
+    Netlify Forms
+    Google Forms
+    TypeForm
+    EmailJS
+
+    Backend propio:
+
+    Crear un servidor con Node.js
+    Usar servicios en la nube como Firebase
+    Implementar un backend con PHP, Python, etc.
+
+    Modificar el script para enviar correos:
+
+javascript
+
+formulario.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    // Capturar datos del formulario
+    const nombre = e.target.querySelector('input[type="text"]').value;
+    const email = e.target.querySelector('input[type="email"]').value;
+    const mensaje = e.target.querySelector('textarea').value;
+
+    // Aquí necesitarías un servicio o backend para enviar el correo
+    // Este código por sí solo no funciona
+    fetch('/enviar-correo', {
+        method: 'POST',
+        body: JSON.stringify({ nombre, email, mensaje })
+    })
+    .then(respuesta => {
+        alert('Mensaje enviado');
+        formulario.reset();
+    })
+    .catch(error => {
+        alert('Error al enviar el mensaje');
+    });
+});
+
+Te recomiendo usar Formspree por su simplicidad:
+
+    Regístrate en formspree.io
+    Crea un formulario
+    Obtén un endpoint único
+    Modifica tu HTML:
+
+html
+
+<form action="URL_DE_FORMSPREE" method="POST">
+    <input type="text" name="nombre" required>
+    <input type="email" name="email" required>
+    <textarea name="mensaje" required></textarea>
+    <button type="submit">Enviar</button>
+</form>
+
+¿Te gustaría que te explique más a detalle alguna de estas opciones?
+
 Explicación del código HTML del proyecto Talento Tech
 
 Este código HTML corresponde a la plantilla de una página web relacionada con la energía renovable. Vamos a desglosarlo paso a paso para entender su estructura y contenido:
