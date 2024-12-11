@@ -24,25 +24,25 @@
 //     });
 // });
 
-formulario.addEventListener('submit', (e) => {
-    e.preventDefault();
+// formulario.addEventListener('submit', (e) => {
+//     e.preventDefault();
     
-    // Capturar datos del formulario
-    const nombre = e.target.querySelector('input[type="text"]').value;
-    const email = e.target.querySelector('input[type="email"]').value;
-    const mensaje = e.target.querySelector('textarea').value;
+//     // Capturar datos del formulario
+//     const nombre = e.target.querySelector('input[type="text"]').value;
+//     const email = e.target.querySelector('input[type="email"]').value;
+//     const mensaje = e.target.querySelector('textarea').value;
 
-    // Aquí necesitarías un servicio o backend para enviar el correo
-    // Este código por sí solo no funciona
-    fetch('/enviar-correo', {
-        method: 'POST',
-        body: JSON.stringify({ nombre, email, mensaje })
-    })
-    .then(respuesta => {
-        alert('Mensaje enviado');
-        formulario.reset();
-    })
-    .catch(error => {
-        alert('Error al enviar el mensaje');
-    });
-});
+//     // Aquí necesitarías un servicio o backend para enviar el correo
+//     // Este código por sí solo no funciona
+//     fetch('/enviar-correo', {
+//         method: 'POST',
+//         body: JSON.stringify({ nombre, email, mensaje })
+//     })
+//     .then(respuesta => {
+//         alert('Mensaje enviado');
+//         formulario.reset();
+//     })
+//     .catch(error => {
+//         alert('Error al enviar el mensaje');
+//     });
+// });
