@@ -143,3 +143,18 @@ footer {
         margin: 10px 0;
     }
 }
+
+          /* Estilos base para modo oscuro */
+          .dark body {
+            background-color: #1a202c;
+            color: #e2e8f0;
+            }
+            .dark .dark\:bg-gray-800 {
+            background-color: #2d3748;
+            }
+            .dark .dark\:text-white {
+            color: #ffffff;
+            }
+            .dark .dark\:bg-gray-700 {
+            background-color: #4a5568;
+            }
