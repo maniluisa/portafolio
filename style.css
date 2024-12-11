@@ -145,6 +145,10 @@ footer {
 }
 
           /* Estilos base para modo oscuro */
+          .dark header {
+            background-color: #fff;
+            color: #000;
+            }
           .dark body {
             background-color: #1a202c;
             color: #e2e8f0;
