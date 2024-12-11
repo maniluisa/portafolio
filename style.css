@@ -149,14 +149,16 @@ footer {
             background-color: #007bff;
             color: #000;
             }
-            .dark .grid-proyectos{
-                background-color: #007bff;
-                color: #000;
-                }
+          
           .dark body {
             background-color: #1a202c;
             color: #e2e8f0;
             }
+
+            .dark body #proyectos{
+                background-color: #007bff;
+                color: #000;
+                }
             .dark .dark\:bg-gray-800 {
             background-color: #2d3748;
             }
